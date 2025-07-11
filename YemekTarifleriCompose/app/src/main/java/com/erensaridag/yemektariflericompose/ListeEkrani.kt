@@ -17,11 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.erensaridag.yemektariflericompose.model.Yemek
 import com.erensaridag.yemektariflericompose.ui.theme.YemekTarifleriComposeTheme
+import com.google.gson.Gson
 
 @Composable
-fun YemekListesi(yemekler: List<Yemek>) {
+fun YemekListesi(yemekler: List<Yemek>, navController: NavController) {
     LazyColumn(
         contentPadding = PaddingValues(5.dp),
         modifier = Modifier
@@ -30,19 +32,19 @@ fun YemekListesi(yemekler: List<Yemek>) {
 
     ) {
         items(yemekler) {
-            YemekRow(yemek = it)
+            YemekRow(yemek = it, navController = navController)
         }
     }
 }
 
 @Composable
-fun YemekRow(yemek: Yemek) {
+fun YemekRow(yemek: Yemek,navController: NavController) {
     Column(
         Modifier
             .fillMaxWidth()
             .background(color = MaterialTheme.colorScheme.background)
             .clickable {
-                //navigasyon
+                navController.navigate("detay_ekrani/${Gson().toJson(yemek) }")
             }
     ) {
         Text(

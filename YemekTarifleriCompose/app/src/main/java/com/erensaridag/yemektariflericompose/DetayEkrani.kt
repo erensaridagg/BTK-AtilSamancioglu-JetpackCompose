@@ -51,13 +51,14 @@ fun DetayEkrani(yemek: Yemek) {
 
 
             )
-            Text(text = yemek.malzemeler,
+            Text(
+                text = yemek.malzemeler,
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier.padding(5.dp),
                 fontWeight = FontWeight.Normal,
                 color = Color.Black,
                 textAlign = TextAlign.Center,
-                )
+            )
         }
     }
 }
